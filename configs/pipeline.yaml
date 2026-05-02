@@ -1,0 +1,47 @@
+project:
+  name: hmas-memory-lab
+  output_dir: results
+
+models:
+  planner:
+    provider: deepseek
+    model: deepseek-v4-pro
+    api_key_env: DEEPSEEK_API_KEY
+  syncer:
+    provider: deepseek
+    model: deepseek-v4-flash
+    api_key_env: DEEPSEEK_API_KEY
+
+memory:
+  short_term:
+    max_items: 50
+  long_term:
+    top_k: 8
+  retrospective:
+    max_items: 30
+
+baselines:
+  - name: cognee
+    path: ../cognee-main
+  - name: hindsight
+    path: ../hindsight-main
+
+evaluation:
+  tool: openclaw
+  openclaw_path: ../OpenCLAW
+  metrics:
+    - recall_at_k
+    - latency_ms
+    - consistency_score
+    - task_success_rate
+
+experiment:
+  agents:
+    - planner
+    - executor
+    - reviewer
+  tasks:
+    - "跨智能体记忆共享场景"
+    - "长期记忆召回场景"
+    - "复盘纠错场景"
+
