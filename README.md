@@ -66,7 +66,7 @@ python scripts/run_pipeline.py --config configs/pipeline.yaml
 - 调用 OpenCLAW 对自研模块与基线进行统一输入、统一指标评估
 - 输出结果到 `results/summary.json`
 
-## 下一步扩展建议
+## 未来工作
 
 - 接入向量数据库（Milvus / FAISS）优化长期记忆检索
 - 增加召回延迟、命中率、跨 agent 一致性等指标
